@@ -246,7 +246,7 @@ public:
   template <class IterT1, class IterT2>
   void interp_vec(int n, IterT1 coord_iter_begin, IterT1 coord_iter_end, IterT2 i_result) const {
     assert(N == coord_iter_end - coord_iter_begin);
-	
+	(void) coord_iter_end;
 	array<int,N> cell_index, v_index;
 	array<std::pair<T, int>,N> xipair;	
 	int c;
@@ -335,11 +335,13 @@ public:
   }
   
   template <class IterT1, class IterT2>
-  void interp_vec(int n, IterT1 coord_iter_begin, IterT1 coord_iter_end, IterT2 i_result) const {
+  void interp_vec(int n, IterT1 coord_iter_begin, IterT1 coord_iter_end, IterT2 i_result) const {    
     assert(N == coord_iter_end - coord_iter_begin);
+  (void) coord_iter_end;
 	array<int,N> index;
 	int c;
 	T y, xi;
+  (void) xi;
     vector<T> f(1 << N);
 	array<T,N> x;
 	
@@ -350,7 +352,7 @@ public:
 		c = this->find_cell(dim, coord_iter_begin[dim][i]);
 		if (c == -1) {					// before first grid point
 		  y = 1.0;
-		} else if (c == grid.size()-1) {	// after last grid point
+		} else if (c == (int)grid.size()-1) {	// after last grid point
 		  y = 0.0;
 		} else {
 		  y = (coord_iter_begin[dim][i] - grid[c]) / (grid[c + 1] - grid[c]);
