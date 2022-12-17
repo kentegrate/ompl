@@ -64,7 +64,7 @@ struct DefaultOutputHandler
     {
         output_handler_ = static_cast<ompl::msg::OutputHandler *>(&std_output_handler_);
         previous_output_handler_ = output_handler_;
-        logLevel_ = ompl::msg::LOG_DEBUG;
+        logLevel_ = ompl::msg::LOG_ERROR;
     }
 
     ompl::msg::OutputHandlerSTD std_output_handler_;
